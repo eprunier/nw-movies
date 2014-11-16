@@ -1,0 +1,12 @@
+{
+  "name": "gtdonejs",
+  "devDependencies": {
+    "angular": "1.3.2",
+    "angular-route": "1.3.2",
+    "angular-resource" : "1.3.2",
+    "bootstrap": "3.3.1",
+    "jquery": "2.1.1",
+    "node-webkit-linux": "http://dl.node-webkit.org/v0.11.0/node-webkit-v0.11.0-linux-x64.tar.gz",
+    "node-webkit-win": "http://dl.node-webkit.org/v0.11.0/node-webkit-v0.11.0-win-x64.zip"
+  }
+}
