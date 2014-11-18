@@ -1,4 +1,4 @@
-movies.controller("homeController", function ($scope, moviesService, $location) {
+module.exports = function ($scope, moviesService, $location) {
     $scope.movies = moviesService.query();
 
     $scope.currMovie = null;
@@ -28,4 +28,4 @@ movies.controller("homeController", function ($scope, moviesService, $location) 
     $scope.isActivePath = function (route) {
         return ($location.path()).indexOf(route) >= 0;
     }
-});
+};

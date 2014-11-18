@@ -1,5 +1,5 @@
 {
-  "name": "nw-movies",
+  "name": "movies",
   "version": "0.1.0",
   "description": "Movies manager based on Node-Webkit and Angular",
   "keywords": [

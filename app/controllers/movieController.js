@@ -1,3 +1,3 @@
-movies.controller("movieController", function ($scope, $routeParams) {
+module.exports = function ($scope, $routeParams) {
     $scope.getMovieById($routeParams.id);
-});
+};
