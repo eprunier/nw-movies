@@ -1,5 +1,5 @@
 <h2>Movies</h2>
-<input type="text" placeholder="Search Movies" class="form-control" data-ng-model="search">
+<input type="text" placeholder="Search Movies" class="form-control" data-ng-model="search" />
 
 <div class="">
     <!-- Example row of columns -->
@@ -11,7 +11,7 @@
             </p>
             <p>{{movie.review | limitTo:99}}...</p>
             <p>
-                <a data-ng-href="#/movie/{{movie.id}}" class="btn btn-primary">Review</a>
+                <a data-ng-href="#/movie/{{movie._id}}" class="btn btn-primary">Review</a>
             </p>
         </div>
     </div>

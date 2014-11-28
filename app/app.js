@@ -19,4 +19,4 @@ movies.controller('homeController', require('./app/controllers/homeController'))
 movies.controller('movieController', require('./app/controllers/movieController'));
 
 /* Services */
-movies.factory('moviesService', require('./app/services/moviesService.js'));
+movies.factory('db', require('./app/services/db'));
