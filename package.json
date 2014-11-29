@@ -20,8 +20,7 @@
         "grunt-bower": "^0.16.0"
     },
     "dependencies": {
-        "tingodb": "^0.3.1",
-        "diskdb": "^0.1.14"
+        "tingodb": "^0.3.1"
     },
     "scripts": {
         "start": "node ./script/start.js"

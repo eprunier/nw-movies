@@ -20,9 +20,7 @@ collection.insert([
     }
 );
 
-module.exports = function ($rootScope, $resource, $timeout) {
-    // return $resource('http://moviestub.cloudno.de/movies');
-
+module.exports = function ($rootScope) {
     return {
         movies: function () {
             var movies = [];
@@ -36,9 +34,9 @@ module.exports = function ($rootScope, $resource, $timeout) {
 
             return movies;
         },
-        movie: function(id, cb) {
+        movie: function(id, callback) {
             collection.findOne({'_id': id}, function (err, movie) {
-                cb(movie);
+                callback(movie);
                 $rootScope.$digest();
             });
         }
