@@ -36,9 +36,9 @@ module.exports = function ($rootScope, $resource, $timeout) {
 
             return movies;
         },
-        movie: function($scope, id) {
+        movie: function(id, cb) {
             collection.findOne({'_id': id}, function (err, movie) {
-                $scope.movie = movie;
+                cb(movie);
                 $rootScope.$digest();
             });
         }

@@ -1,5 +1,7 @@
 module.exports = function ($scope, $routeParams, db) {
-    db.movie($scope, $routeParams.id);
+    db.movie($routeParams.id, function (movie) {
+        $scope.movie = movie;
+    });
 
     $scope.back = function () {
         window.history.back();
