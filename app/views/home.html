@@ -4,15 +4,12 @@
 <div class="">
     <!-- Example row of columns -->
     <div class="row movies-list">
-        <div class="col-md-4" data-ng-repeat="movie in movies | orderBy:'name':false | filter:search">
+        <div class="col-md-4 movie"
+                data-ng-repeat="movie in movies | orderBy:'name':false | filter:search"
+                ng-click="displayMovie(movie)">
             <h2>{{movie.name | uppercase}}</h2>
-            <p>
-                <img data-ng-src="{{movie.thumb}}" class="thumb-big">
-            </p>
+            <img data-ng-src="{{movie.thumb}}" class="thumb-big">
             <p>{{movie.review | limitTo:99}}...</p>
-            <p>
-                <a data-ng-href="#/movie/{{movie._id}}" class="btn btn-primary">Review</a>
-            </p>
         </div>
-    </div>
+</div>
 </div>

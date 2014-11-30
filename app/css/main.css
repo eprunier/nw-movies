@@ -1,11 +1,16 @@
 body {
     padding-top: 50px;
 }
-.thumb-big
-{
+
+.thumb-big {
     height: 199px;
 }
-.movies-list
-{
+
+.movies-list {
     text-align: center;
+}
+
+.movies-list .movie {
+    height: 325px;
+    cursor: pointer;
 }
