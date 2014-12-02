@@ -10,19 +10,21 @@ module.exports = function () {
         // addSampleData(collection);
     }
 
-    this.$get = function ($rootScope) {
+    this.$get = function ($rootScope, common) {
         return {
             movies: function () {
                 var movies = [];
 
                 collection.find({}).toArray(function (err, moviesList) {
-                    if (err && Object.keys(err).length > 0) {
+                    if (err && !common.isEmpty(err)) {
                         console.log('Unable to find movies', err);
                     } else {
-                        moviesList.forEach(function (movie) {
-                            movies.push(movie);
-                        });
-                        $rootScope.$digest();
+                        if (moviesList) {
+                            moviesList.forEach(function (movie) {
+                                movies.push(movie);
+                            });
+                            $rootScope.$digest();
+                        }
                     }
                 });
 
@@ -30,10 +32,10 @@ module.exports = function () {
             },
             movie: function (id, callback) {
                 collection.findOne({'_id': id}, function (err, movie) {
-                    if (err) {
+                    if (err && !common.isEmpty(err)) {
                         console.log('Unable to get movie', err);
                     } else {
-                        callback(movie);
+                        callback(movie || {});
                     }
                 });
             },

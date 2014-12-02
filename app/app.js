@@ -45,8 +45,10 @@ function init(config) {
     });
 
     /* Services */
+    movies.factory('common', require('./app/services/common'));
     movies.provider('db', require('./app/services/db'));
 
+    /* Configure services */
     movies.config(['dbProvider', function (dbProvider) {
         dbProvider.setDataHome(config.dataHome);
     }]);
