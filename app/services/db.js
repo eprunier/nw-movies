@@ -1,14 +1,10 @@
-var fs = require('fs');
 var tingodb = require('tingodb')();
 
 module.exports = function () {
     var collection = {};
 
-    this.setHome = function (home) {
-        var dbPath = home + "/data";
-        fs.mkdir(dbPath, function () {});
-
-        var db = new tingodb.Db(dbPath, {});
+    this.setDataHome = function (dataHome) {
+        var db = new tingodb.Db(dataHome, {});
         collection = db.collection('movies');
 
         // addSampleData(collection);
@@ -20,7 +16,7 @@ module.exports = function () {
                 var movies = [];
 
                 collection.find({}).toArray(function (err, moviesList) {
-                    if (err) {
+                    if (err && Object.keys(err).length > 0) {
                         console.log('Unable to find movies', err);
                     } else {
                         moviesList.forEach(function (movie) {

@@ -1,14 +1,20 @@
+var mkdirp = require('mkdirp');
+
 var config = configure();
 init(config);
 
 function configure() {
-    var fs = require('fs');
     var userHome = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
-    var moviesHome = userHome + '/.nw-movies';
-    fs.mkdir(moviesHome, function () {});
+    var dataHome = process.env.XDG_DATA_HOME || userHome + '/.local/share';
+    var moviesDataHome = dataHome + '/nw-movies';
+    mkdirp.sync(moviesDataHome, function (err) {
+        if (err) {
+            console.log('Error while creating data directory', err);
+        }
+    });
 
     return {
-        home: moviesHome
+        dataHome: moviesDataHome
     };
 }
 
@@ -42,6 +48,6 @@ function init(config) {
     movies.provider('db', require('./app/services/db'));
 
     movies.config(['dbProvider', function (dbProvider) {
-        dbProvider.setHome(config.home);
+        dbProvider.setDataHome(config.dataHome);
     }]);
 }

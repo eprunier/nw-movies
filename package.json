@@ -1,28 +1,29 @@
 {
-    "name": "movies",
-    "version": "0.1.0",
-    "description": "Movies manager based on Node-Webkit and Angular",
-    "keywords": [
-        "movies"
-    ],
-    "author": "Eric Prunier",
-    "license": "MIT",
-    "main": "index.html",
-    "window": {
-        "toolbar": true,
-        "resizable": true,
-        "width": 1200,
-        "height": 800,
-        "position": "center"
-    },
-    "devDependencies": {
-        "grunt": "^0.4.5",
-        "grunt-bower": "^0.16.0"
-    },
-    "dependencies": {
-        "tingodb": "^0.3.1"
-    },
-    "scripts": {
-        "start": "node ./script/start.js"
-    }
+  "name": "movies",
+  "version": "0.1.0",
+  "description": "Movies manager based on Node-Webkit and Angular",
+  "keywords": [
+    "movies"
+  ],
+  "author": "Eric Prunier",
+  "license": "MIT",
+  "main": "index.html",
+  "window": {
+    "toolbar": true,
+    "resizable": true,
+    "width": 1200,
+    "height": 800,
+    "position": "center"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bower": "^0.16.0"
+  },
+  "dependencies": {
+    "mkdirp": "^0.5.0",
+    "tingodb": "^0.3.1"
+  },
+  "scripts": {
+    "start": "node ./script/start.js"
+  }
 }
