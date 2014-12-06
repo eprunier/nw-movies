@@ -1,5 +1,5 @@
 var tingodb = require('tingodb')();
-var common = require('../common')();
+var common = require('../common');
 
 module.exports = function () {
     var collection = {};

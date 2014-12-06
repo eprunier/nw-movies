@@ -1,5 +1,14 @@
 <div ng-show="movie">
-    <button class="btn btn-danger pull-right" ng-click="delete()">Delete</button>
+    <div class="btn-group pull-right">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class="glyphicon glyphicon-edit">
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#/edit/{{movie._id}}">Edit</a></li>
+            <li class="divider"></li>
+            <li><a href="#/" ng-click="delete()" class="link">Delete</a></li>
+        </ul>
+    </div>
     <h3>{{movie.name}}</h3>
     <div class="row">
         <div class="col-md-4">

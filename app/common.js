@@ -1,10 +1,6 @@
-module.exports = function () {
-    return {
-        existy: existy,
-        truthy: truthy,
-        isEmpty: isEmpty
-    }
-}
+exports.existy = existy;
+exports.truthy = truthy;
+exports.isEmpty = isEmpty;
 
 function existy (obj) {
     return obj !== undefined && obj !== null;

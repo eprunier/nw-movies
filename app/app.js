@@ -25,7 +25,7 @@ function init(config) {
     movies.controller('mainController', require('./app/controllers/mainController'));
     movies.controller('homeController', require('./app/controllers/homeController'));
     movies.controller('movieController', require('./app/controllers/movieController'));
-    movies.controller('addMovieController', require('./app/controllers/addMovieController'));
+    movies.controller('editMovieController', require('./app/controllers/editMovieController'));
 
     /* Routes */
     movies.config(function ($routeProvider) {
@@ -36,16 +36,18 @@ function init(config) {
         }).when('/movie/:id', {
             templateUrl: 'app/views/movie.html',
             controller: 'movieController'
-        }).when('/add', {
-            templateUrl: 'app/views/addMovie.html',
-            controller: 'addMovieController'
+        }).when('/edit', {
+            templateUrl: 'app/views/editMovie.html',
+            controller: 'editMovieController'
+        }).when('/edit/:id', {
+            templateUrl: 'app/views/editMovie.html',
+            controller: 'editMovieController'
         }).otherwise({
             redirectTo: '/'
         });
     });
 
     /* Services */
-    // movies.factory('common', require('./app/services/common'));
     movies.provider('db', require('./app/services/db'));
 
     /* Configure services */
