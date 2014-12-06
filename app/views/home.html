@@ -1,15 +1,24 @@
 <h2>Movies</h2>
 <input type="text" placeholder="Search Movies" class="form-control" data-ng-model="search" />
 
-<div class="">
+<div style="margin-top: 20px;">
     <!-- Example row of columns -->
     <div class="row movies-list">
-        <div class="col-md-4 movie"
-                data-ng-repeat="movie in movies | orderBy:'name':false | filter:search"
+        <div class="col-md-4 movie" data-ng-repeat="movie in movies | orderBy:'name':false | filter:search"
                 ng-click="displayMovie(movie)">
-            <h2>{{movie.name | uppercase}}</h2>
-            <img data-ng-src="{{movie.thumb}}" class="thumb-big">
-            <p>{{movie.review | limitTo:99}}...</p>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        {{movie.name | uppercase}}
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <img data-ng-src="{{movie.thumb}}" class="thumb-big">
+                </div>
+                <div class="panel-footer">
+                    <p>{{movie.review | limitTo:130}}...</p>
+                </div>
+            </div>
         </div>
-</div>
+    </div>
 </div>

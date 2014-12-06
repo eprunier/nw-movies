@@ -1,4 +1,5 @@
 var tingodb = require('tingodb')();
+var common = require('../common')();
 
 module.exports = function () {
     var collection = {};
@@ -10,34 +11,25 @@ module.exports = function () {
         // addSampleData(collection);
     }
 
-    this.$get = function ($rootScope, common) {
+    this.$get = function ($rootScope, $q) {
         return {
-            movies: function () {
+            movies: function (options) {
                 var movies = [];
 
-                collection.find({}).toArray(function (err, moviesList) {
-                    if (err && !common.isEmpty(err)) {
-                        console.log('Unable to find movies', err);
+                try {
+                    if (common.existy(options)) {
+                        findMovies($rootScope, collection, movies, options);
                     } else {
-                        if (moviesList) {
-                            moviesList.forEach(function (movie) {
-                                movies.push(movie);
-                            });
-                            $rootScope.$digest();
-                        }
+                        loadRandomMovies($rootScope, $q, collection, movies);
                     }
-                });
+                } catch (e) {
+                    console.log(e);
+                }
 
                 return movies;
             },
             movie: function (id, callback) {
-                collection.findOne({'_id': id}, function (err, movie) {
-                    if (err && !common.isEmpty(err)) {
-                        console.log('Unable to get movie', err);
-                    } else {
-                        callback(movie || {});
-                    }
-                });
+                loadMovie(collection, id, callback);
             },
             add: function (movie, callback) {
                 movie.rating = parseInt(movie.rating);
@@ -46,7 +38,7 @@ module.exports = function () {
             delete: function (movie, callback) {
                 collection.remove(movie, callback);
             }
-        };
+        }
     }
 };
 
@@ -64,9 +56,84 @@ function addSampleData(collection) {
         {"name":"Hollow Man","rating":3,"availability":6,"review":"A government scientist (Bacon) discovers how to make people invisible. After a freak accident that makes him slowly disappear, he begins to go insane and seeks revenge on the other scientists on the project.","thumb":"http://upload.wikimedia.org/wikipedia/en/e/e1/Poster_Hollow_Man.jpg"}
         ],
         function (err) {
-            if (err) {
+            if (!common.isEmpty(err)) {
                 console.log(err);
             }
         }
     );
+}
+
+function findMovies($rootScope, collection, movies, options) {
+    collection.find(options).toArray(function (err, moviesList) {
+        if (common.isEmpty(err)) {
+            if (moviesList) {
+                moviesList.forEach(function (movie) {
+                    movies.push(movie);
+                });
+                $rootScope.$digest();
+            }
+        } else {
+            console.log('Unable to find movies', err);
+        }
+    });
+}
+
+function loadRandomMovies($rootScope, $q, collection, movies) {
+    collection.count(function (err, moviesCount) {
+        var promised = [];
+
+        var selectedIndexes = generateSelection(moviesCount);
+        for (index in selectedIndexes) {
+            var promise = loadMovieByIndex($q, collection, index);
+            promised.push(promise);
+        }
+
+        $q.all(promised).then(function (result) {
+            result.forEach(function (movie) {
+                movies.push(movie);
+            });
+        }, function (reason) {
+            return $q.reject(reason);
+        });
+    });
+}
+
+function generateSelection(moviesCount) {
+    var selected = [];
+
+    var nbSelection = Math.min(6, moviesCount);
+    for (i = 0; i < nbSelection; i++) {
+        var next = Math.floor(Math.random() * nbSelection);
+        if (selected.indexOf(next) == -1) {
+            selected.push(next);
+        }
+    }
+
+    return selected;
+}
+
+function loadMovieByIndex ($q, collection, selectedIndex) {
+    return $q(function (resolve, reject) {
+        collection.findOne(
+            {},
+            {skip: selectedIndex},
+            function (err, movie) {
+                if (common.isEmpty(err)) {
+                    resolve(movie);
+                } else {
+                    reject('Unable to load random movie' + err);
+                }
+            }
+        );
+    });
+}
+
+function loadMovie(collection, id, callback) {
+    collection.findOne({'_id': id}, function (err, movie) {
+        if (common.isEmpty(err)) {
+            callback(movie || {});
+        } else {
+            console.log('Unable to get movie', err);
+        }
+    });
 }

@@ -11,6 +11,14 @@ body {
 }
 
 .movies-list .movie {
-    height: 325px;
+    margin-bottom: 5px;
     cursor: pointer;
+}
+
+.movie .panel-title {
+    font-weight: bold;
+}
+
+.movie .panel-footer {
+    height: 80px;
 }
