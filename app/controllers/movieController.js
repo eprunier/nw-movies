@@ -9,10 +9,6 @@ module.exports = function ($rootScope, $scope, $routeParams, $location, db) {
         return new Array(n);
     }
 
-    $scope.edit = function () {
-        $location.path('/edit/' + $scope.movie._id);
-    }
-
     $scope.delete = function () {
         db.delete($scope.movie, function (err) {
             if (!err) {
