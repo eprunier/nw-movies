@@ -83,8 +83,8 @@ function loadRandomMovies($rootScope, $q, collection, movies) {
         var promised = [];
 
         var selectedIndexes = generateSelection(moviesCount);
-        for (index in selectedIndexes) {
-            var promise = loadMovieByIndex($q, collection, index);
+        for (i in selectedIndexes) {
+            var promise = loadMovieByIndex($q, collection, selectedIndexes[i]);
             promised.push(promise);
         }
 
@@ -103,7 +103,7 @@ function generateSelection(moviesCount) {
 
     var nbSelection = Math.min(6, moviesCount);
     for (i = 0; i < nbSelection; i++) {
-        var next = Math.floor(Math.random() * nbSelection);
+        var next = Math.floor(Math.random() * moviesCount);
         if (selected.indexOf(next) == -1) {
             selected.push(next);
         }
