@@ -11,14 +11,33 @@ body {
 }
 
 .movies-list .movie {
-    margin-bottom: 5px;
     cursor: pointer;
 }
 
-.movie .panel-title {
+.movies-list .panel-title {
     font-weight: bold;
 }
 
-.movie .panel-footer {
+.movies-list .panel-footer {
     height: 80px;
+}
+
+.movie .thumb {
+    max-width: 300px;
+}
+
+.movie .detail {
+    clear: both;
+}
+
+.movie .info {
+    display: block;
+    float: left;
+    width: 80px;
+    font-weight: bold;
+}
+
+.movie .review {
+    clear: both;
+    margin-top: 20px;
 }

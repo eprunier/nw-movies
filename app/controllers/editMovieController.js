@@ -12,14 +12,22 @@ module.exports = function ($rootScope, $scope, $routeParams, $location, db) {
         $scope.movie = {};
     }
 
-    $scope.add = function (newMovie) {
-        db.add(newMovie, function (err, movies) {
-            if (err !== null) {
+    $scope.save = function () {
+        db.save($scope.movie, function (err, movies) {
+            if (!common.isEmpty(err)) {
                 console.log('Unable to add movie:', err);
             } else {
-                var movie = movies.pop();
+                var movieID;
+                if (!common.isEmpty(movies)) {
+                    console.log(movies);
+                    var movie = movies.pop();
+                    movieID = movie._id;
+                } else {
+                    movieID = $scope.movie._id;
+                }
+
                 $scope.$apply(function () {
-                    $location.path('/movie/' + movie._id);
+                    $location.path('/movie/' + movieID);
                 });
             }
         });

@@ -5,20 +5,26 @@
     <!-- Example row of columns -->
     <div class="row movies-list">
         <div class="col-md-4 movie" data-ng-repeat="movie in movies | orderBy:'name':false | filter:search"
-                ng-click="displayMovie(movie)">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="panel-title">
-                        {{movie.name | uppercase}}
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <img data-ng-src="{{movie.thumb}}" class="thumb-big">
-                </div>
-                <div class="panel-footer">
-                    <p>{{movie.review | limitTo:130}}...</p>
+        ng-click="displayMovie(movie)">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    {{movie.name | uppercase}}
                 </div>
             </div>
+            <div class="panel-body">
+                <span class="col-md-6">
+                    <img data-ng-src="{{movie.thumb}}" class="thumb-big">
+                </span>
+                <span class="col-md-6">
+                    <div ng-show="movie.genre">{{movie.genre}}</div>
+                    <div ng-show="movie.length">{{movie.length}} min</div>
+                </span>
+            </div>
+            <!-- <div class="panel-footer">
+                <p>{{movie.review | limitTo:130}}...</p>
+            </div> -->
         </div>
     </div>
+</div>
 </div>

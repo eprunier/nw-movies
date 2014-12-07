@@ -31,12 +31,12 @@ module.exports = function () {
             movie: function (id, callback) {
                 loadMovie(collection, id, callback);
             },
-            add: function (movie, callback) {
+            save: function (movie, callback) {
                 movie.rating = parseInt(movie.rating);
-                collection.insert(movie, callback);
+                collection.save(movie, callback);
             },
             delete: function (movie, callback) {
-                collection.remove(movie, callback);
+                collection.delete(movie, callback);
             }
         }
     }
