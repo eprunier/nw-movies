@@ -19,7 +19,6 @@ module.exports = function ($rootScope, $scope, $routeParams, $location, db) {
             } else {
                 var movieID;
                 if (!common.isEmpty(movies)) {
-                    console.log(movies);
                     var movie = movies.pop();
                     movieID = movie._id;
                 } else {

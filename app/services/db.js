@@ -36,7 +36,7 @@ module.exports = function () {
                 collection.save(movie, callback);
             },
             delete: function (movie, callback) {
-                collection.delete(movie, callback);
+                collection.remove(movie, callback);
             }
         }
     }
@@ -104,9 +104,10 @@ function generateSelection(moviesCount) {
     var nbSelection = Math.min(6, moviesCount);
     for (i = 0; i < nbSelection; i++) {
         var next = Math.floor(Math.random() * moviesCount);
-        if (selected.indexOf(next) == -1) {
-            selected.push(next);
+        while (selected.indexOf(next) > -1) {
+            next = Math.floor(Math.random() * moviesCount);
         }
+        selected.push(next);
     }
 
     return selected;

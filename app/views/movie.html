@@ -6,7 +6,7 @@
         <ul class="dropdown-menu" role="menu">
             <li><a href="#/edit/{{movie._id}}">Edit</a></li>
             <li class="divider"></li>
-            <li><a href="#/" ng-click="delete()" class="link">Delete</a></li>
+            <li><a ng-click="delete()" class="delete">Delete</a></li>
         </ul>
     </div>
     <h3>{{movie.name}}</h3>
@@ -15,7 +15,7 @@
             <img class="thumb" data-ng-src="{{movie.thumb}}">
         </div>
         <div class="col-md-6">
-            <div class="detail"><span class="info">Length</span>{{movie.length}} min</div>
+            <div class="detail"><span class="info">Length</span><span ng-show="movie.length">{{movie.length}} min</span></div>
             <div class="detail"><span class="info">Year</span>{{movie.year}}</div>
             <div class="detail"><span class="info">Genre</span>{{movie.genre}}
             </div>
