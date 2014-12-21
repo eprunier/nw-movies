@@ -7,10 +7,6 @@ module.exports = function ($scope, $routeParams, $location, db) {
         });
     });
 
-    $scope.getCount = function (n) {
-        return new Array(n);
-    }
-
     $scope.delete = function () {
         db.delete($scope.movie, function (err) {
             if (common.isEmpty(err)) {

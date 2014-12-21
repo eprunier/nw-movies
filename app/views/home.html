@@ -1,10 +1,10 @@
 <h2>Movies</h2>
-<input type="text" placeholder="Search Movies" class="form-control" data-ng-model="search" />
+<input type="text" placeholder="Search Movies" class="form-control" data-ng-model="search" ng-change="findMovies()" />
 
 <div style="margin-top: 20px;">
     <!-- Example row of columns -->
     <div class="row movies-list">
-        <div class="col-md-4 movie" data-ng-repeat="movie in movies | orderBy:'name':false | filter:search"
+        <div class="col-md-4 movie" data-ng-repeat="movie in movies | orderBy:'name':false"
         ng-click="displayMovie(movie)">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -14,11 +14,13 @@
             </div>
             <div class="panel-body">
                 <span class="col-md-6">
-                    <img data-ng-src="{{movie.thumb}}" class="thumb-big">
+                    <img data-ng-src="{{movie.thumb}}" class="thumb">
                 </span>
                 <span class="col-md-6">
-                    <div ng-show="movie.genre">{{movie.genre}}</div>
+                    <div ng-show="movie.genre" class="genre">{{movie.genre}}</div>
                     <div ng-show="movie.length">{{movie.length}} min</div>
+                    <div ng-show="movie.mediaType" class="media-type">{{movie.mediaType}}</div>
+                    <span data-ng-repeat="i in getCount(movie.rating) track by $index" class="glyphicon glyphicon-star"></span>
                 </span>
             </div>
         </div>

@@ -2,8 +2,20 @@ body {
     padding-top: 50px;
 }
 
-.thumb-big {
+.thumb {
     height: 199px;
+}
+
+.thumb-big {
+    max-width: 300px;
+}
+
+.genre {
+    text-transform: capitalize;
+}
+
+.media-type {
+    text-transform: uppercase;
 }
 
 .movies-list {
@@ -16,6 +28,7 @@ body {
 
 .movies-list .panel-title {
     font-weight: bold;
+    font-size: 0.9em;
 }
 
 .movies-list .panel-footer {
@@ -33,7 +46,7 @@ body {
 .movie .info {
     display: block;
     float: left;
-    width: 80px;
+    width: 90px;
     font-weight: bold;
 }
 
