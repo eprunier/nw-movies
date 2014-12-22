@@ -17,6 +17,7 @@
                     <img data-ng-src="{{movie.thumb}}" class="thumb">
                 </span>
                 <span class="col-md-6">
+                    <div ng-show="movie.year">{{movie.year}}</div>
                     <div ng-show="movie.genre" class="genre">{{movie.genre}}</div>
                     <div ng-show="movie.length">{{movie.length}} min</div>
                     <div ng-show="movie.mediaType" class="media-type">{{movie.mediaType}}</div>
