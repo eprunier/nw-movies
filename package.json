@@ -9,7 +9,7 @@
   "license": "MIT",
   "main": "index.html",
   "window": {
-    "toolbar": true,
+    "toolbar": false,
     "resizable": true,
     "width": 1200,
     "height": 800,

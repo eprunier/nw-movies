@@ -19,7 +19,7 @@ function configure() {
 }
 
 function init(config) {
-    movies = angular.module('movies', ['ngResource', 'ngRoute']);
+    movies = angular.module('movies', ['ngRoute']);
 
     /* Controllers */
     movies.controller('mainController', require('./app/controllers/mainController'));

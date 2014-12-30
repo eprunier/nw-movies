@@ -6,7 +6,7 @@ module.exports = function () {
 
     this.setDataHome = function (dataHome) {
         var db = new tingodb.Db(dataHome, {});
-        collection = db.collection('movies');
+        collection = db.collection('movies.db');
 
         // addSampleData(collection);
     }
